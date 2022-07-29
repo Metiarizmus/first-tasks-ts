@@ -9,16 +9,14 @@ console.log(indexOfAll([1, 2, 3, 1, 2, 3], 1)); -> [0, 3]
 console.log(indexOfAll([1, 2, 3], 4)); -> []
  */
 
-function indexOfAll(arr: Array<any>, val: any): Array<any> {
-    let newArr: Array<any> = []
+function indexOfAll<T>(arr: T[], val: T): T[] {
 
-    arr.forEach((x, index) => {
-        if (x === val) {
-            newArr.push(index)
+    return arr.reduce((acc:any, el,index) => {
+        if (el === val){
+            acc.push(index);
         }
-    })
-
-    return newArr;
+        return acc;
+    }, [])
 }
 
 console.log(indexOfAll([1, 2, 3, 1, 2, 3], 1)); //-> [0, 3]

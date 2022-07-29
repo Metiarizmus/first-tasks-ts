@@ -7,20 +7,22 @@ console.log(arrayDiff([1, 2, 3], [1, 2, 4])); -> [3, 4]
 console.log(arrayDiff([1, 3, 3, 4], [1, 3, '4'])); -> [4, '4']
  */
 
-function arrayDiff(arr1: Array<any>, arr2: Array<any>):Array<any> {
+function arrayDiff<T>(arr1: T[], arr2: T[]): T[] {
 
-    let newArr: Array<any> = arr1.concat(arr2);
+    let map = new Map<any, number>();
 
-    newArr.sort()
+    arr1.concat(arr2).forEach(x => {
+        map.has(x) ? map.set(x, (map.get(x) + 1)) : map.set(x, 1);
+    })
 
-    for (let i = 1; i < newArr.length; i++) {
-        if (newArr[i] === newArr[i-1]) {
-            newArr = newArr.filter(x => (x!==i && x!==(i+1)))
+    let result: T[] = [];
+    map.forEach(((value, key) => {
+        if (value === 1) {
+            result.push(key);
         }
-    }
-
-    return newArr;
+    }))
+    return result;
 }
 
-//console.log(arrayDiff([1, 2, 3], [1, 2, 4])); //-> [3, 4]
-console.log(arrayDiff([1, 3, 3, 4], [1, 3, '4'])); //-> [4, '4']
+console.log(arrayDiff<number>([1, 2, 3], [1, 2, 4])); //-> [3, 4]
+console.log(arrayDiff<any>([1, 3, 3, 4], [1, 3, '4'])); //-> [4, '4']

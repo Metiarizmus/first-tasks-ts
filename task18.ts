@@ -6,7 +6,7 @@
 */
 
 function sqr(num: number):number {
-    return Number(("" + num).split("").map(Number).map(x => x * x).join(""));
+    return Number(num.toString().split("").map(x => Math.pow(Number(x),2)).join(""));
 }
 
 console.log(sqr(9119))

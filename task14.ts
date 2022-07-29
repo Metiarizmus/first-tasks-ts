@@ -10,10 +10,8 @@ alert( unique(strings) ); // [‘aaa', ‘zzz', ‘xxx', ‘bbb', ‘ccc']
 */
 
 
-function unique(arr: Array<any>): Set<any>{
-    let set = new Set<any>();
-    arr.forEach(x=> set.add(x));
-    return set;
+function unique<T>(arr: T[]): Set<T>{
+    return new Set<T>([...arr]);
 }
 
 let strings = ['aaa', 'aaa', 'zzz', 'xxx', 'aaa', 'bbb', 'aaa',  'xxx', 'ccc'];

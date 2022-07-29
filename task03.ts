@@ -11,10 +11,9 @@
 forEachRight([1, 2, 3, 4], val => console.log(val)); -> в консоль 4 3 2 1
  */
 
-function forEachRight(arr: Array<any>, fun: (val:any) => any):Array<any> {
-
-    return arr.reverse().map(fun);
+function forEachRight<T>(arr: T[], fun: (val:T) => any):void {
+    return arr.reverse().forEach(fun);
 }
 
-forEachRight([1, 2, 3, 4], val => console.log(val));
+forEachRight<number>([1, 2, 3, 4], val => console.log(val));
 

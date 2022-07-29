@@ -6,21 +6,22 @@ camelize("-webkit-transition") == 'WebkitTransition';
 */
 
 function camelize(name: string): string {
+    let in2:number;
 
-    let arr: Array<string> = name.split("");
-
-    for (let i = 1; i < arr.length - 1; i++) {
-        if (arr[i - 1] === '-') {
-            arr[i - 1] = '';
-            arr[i] = arr[i].toUpperCase();
-        }
-    }
-
-    // @ts-ignore
-    return arr.join("").replaceAll("-", "");
+    return name.split('')
+        .map((x, index, array) => {
+            if (x==='-') {
+                in2 = index;
+                return x = array[index+1].toUpperCase()
+            }else{
+                if (in2+1 != index)
+                return x;
+            }
+        })
+        .filter(x => x !== '-')
+        .join("")
 }
-
 
 console.log(camelize("background-color")); //== 'backgroundColor';
 console.log(camelize("list-style-image")); //== 'listStyleImage';
-console.log(camelize("-webkit-transition---")); //== 'WebkitTransition';
+console.log(camelize("-webkit-transition")); //== 'WebkitTransition';

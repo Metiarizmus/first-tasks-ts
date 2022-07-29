@@ -15,8 +15,6 @@ membersOnActiveMeetups(meetups); // 1500
 membersOnActiveMeetups(meetups); // 1500
  */
 
-import {isNumber} from "util";
-
 interface Meetup {
     name: string,
     isActive: boolean,
@@ -30,7 +28,7 @@ const meetups = [
     {name: 'React', isActive: true, members: 500},
 ];
 
-function membersOnActiveMeetups(arr: Array<Meetup>): number {
+function membersOnActiveMeetups(arr: Meetup[]): number {
     return arr.reduce((acc: number, meetup: Meetup) => {
         return meetup.isActive ? acc + meetup.members : acc;
     }, 0)

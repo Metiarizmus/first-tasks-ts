@@ -10,9 +10,9 @@ divisors(13); // should return "13 is prime"
 
 */
 
-function divisors(num:number): Array<number> | string {
+function divisors(num:number): number[] | string {
 
-    let arr: Array<number> = [];
+    let arr: number[] = []
 
     for (let i = 2; i < num; i++) {
         if (num % i === 0) {

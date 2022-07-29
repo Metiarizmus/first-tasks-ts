@@ -7,12 +7,9 @@ console.log(union([5, 1, 2, 3, 3], [4, 3, 2])); -> [5, 1, 2, 3, 4]
 console.log(union([5, 1, 3, 3, 4], [1, 3, 4])); -> [5, 1, 3, 4]
  */
 
-function union(arr1: Array<any>, arr2: Array<any>): Set<any> {
-
-    let newArr: Array<any> = arr1.concat(arr2);
-
-    return new Set<any>([...newArr]);
+function union<T>(arr1: T[], arr2: T[]): Set<T> {
+    return new Set<T>([...arr1, ...arr2]);
 }
 
-console.log(union([5, 1, 2, 3, 3], [4, 3, 2])); //-> [5, 1, 2, 3, 4]
-console.log(union([5, 1, 3, 3, 4], [1, 3, 4])); //-> [5, 1, 3, 4]
+console.log(union<number>([5, 1, 2, 3, 3], [4, 3, 2])); //-> [5, 1, 2, 3, 4]
+console.log(union<number>([5, 1, 3, 3, 4], [1, 3, 4])); //-> [5, 1, 3, 4]
