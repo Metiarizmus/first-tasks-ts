@@ -11,9 +11,10 @@ console.log(indexOfAll([1, 2, 3], 4)); -> []
 
 function indexOfAll<T>(arr: T[], val: T): T[] {
 
-    return arr.reduce((acc:any, el,index) => {
-        if (el === val){
-            acc.push(index);
+    return arr.reduce((acc: any, el, index) => {
+
+        if (el === val) {
+            return [...acc, index]
         }
         return acc;
     }, [])

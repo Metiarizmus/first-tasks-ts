@@ -13,12 +13,9 @@ function spinWords(str: string, count: number): string {
 
     return str.split(" ").reduce((acc: string[], val) => {
 
-        if (val.length >= count) {
-            acc.push(val.split("").reverse().join(""));
-        } else {
-            acc.push(val)
-        }
-        return acc;
+        const res = val.length >= count ? val.split("").reverse().join("") : val;
+
+        return [...acc, res];
     }, []).join(" ");
 
 

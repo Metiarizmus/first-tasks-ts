@@ -13,13 +13,12 @@ console.log(without([2, 1, 10, 20, 5], 1, 2, 5)) -> [10, 20]
 
 function without<T>(arr: T[], ...args: T[]): T[] {
 
-    let obj = args.reduce((acc, curr) => {
-        acc[curr] = false;
+    const obj = args.reduce((acc, curr) => {
+        acc[curr] = true;
         return acc;
     }, {} as any);
 
-    return arr.filter(x => obj[x]===undefined)
-
+    return arr.filter(x => !obj[x])
 }
 
 console.log(without([2, 1, 2, 3], 1, 2))// -> [3]

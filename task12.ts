@@ -6,20 +6,15 @@ camelize("-webkit-transition") == 'WebkitTransition';
 */
 
 function camelize(name: string): string {
-    let in2:number;
 
-    return name.split('')
-        .map((x, index, array) => {
-            if (x==='-') {
-                in2 = index;
-                return x = array[index+1].toUpperCase()
-            }else{
-                if (in2+1 != index)
-                return x;
-            }
-        })
-        .filter(x => x !== '-')
-        .join("")
+    return name.split("-").map((s, index) => {
+        if (index != 0) {
+            s = s[0].toUpperCase() + s.slice(1);
+            return s;
+        }
+        return s;
+    }).filter(s => s!='').join('')
+
 }
 
 console.log(camelize("background-color")); //== 'backgroundColor';
