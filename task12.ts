@@ -7,20 +7,16 @@ camelize("-webkit-transition") == 'WebkitTransition';
 
 function camelize(name: string): string {
 
-    let arr: Array<string> = name.split("");
-
-    for (let i = 1; i < arr.length - 1; i++) {
-        if (arr[i - 1] === '-') {
-            arr[i - 1] = '';
-            arr[i] = arr[i].toUpperCase();
+    return name.split("-").map((s, index) => {
+        if (index != 0) {
+            s = s[0].toUpperCase() + s.slice(1);
+            return s;
         }
-    }
+        return s;
+    }).filter(s => s!='').join('')
 
-    // @ts-ignore
-    return arr.join("").replaceAll("-", "");
 }
-
 
 console.log(camelize("background-color")); //== 'backgroundColor';
 console.log(camelize("list-style-image")); //== 'listStyleImage';
-console.log(camelize("-webkit-transition---")); //== 'WebkitTransition';
+console.log(camelize("-webkit-transition")); //== 'WebkitTransition';

@@ -11,18 +11,14 @@ spinWords( "This is another test", 3 )=> returns "sihT is rehtona tset"
 
 function spinWords(str: string, count: number): string {
 
-    let arr: Array<string> = str.split(" ");
-    let newArr: Array<string> = []
-    for (let q of arr) {
-        if (q.length >= count) {
+    return str.split(" ").reduce((acc: string[], val) => {
 
-            newArr.push(q.split("").reverse().join(""));
-        } else {
-            newArr.push(q);
-        }
-    }
+        const res = val.length >= count ? val.split("").reverse().join("") : val;
 
-    return newArr.join(" ");
+        return [...acc, res];
+    }, []).join(" ");
+
+
 }
 
 console.log(spinWords("Hey fellow warriors", 5));

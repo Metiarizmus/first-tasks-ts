@@ -12,17 +12,9 @@ alert( filtered ); // 3,1
 */
 
 
-function filterRange(arr: Array<number | string>, a: number | string, b: number | string): Array<number | string> {
-    let newArr: Array<number | string> = [];
-    for (let q of arr) {
-        if (q >= a && q <= b) {
-            newArr.push(q);
-        }
-    }
-    return newArr;
+function filterRange<T>(arr: T[], a: T, b: T): T[] {
+    return arr.filter(x => x >= a && x <= b);
 }
 
-let arr = [5, 3, 8, 1];
 let arrStr = ['a', 'b', 'c', 'd']
-let filtered = filterRange(arrStr, 'a', 'c');
-console.log(filtered)
+console.log(filterRange(arrStr, 'a', 'c'));

@@ -8,7 +8,7 @@ minMax([2334454,5])   == [5, 2334454]
 minMax([1])           == [1, 1]
 */
 
-function minMax(arr: Array<number>): Array<number> {
+function minMax(arr: number[]): number[] {
     return [Math.min(...arr), Math.max(...arr)];
 }
 

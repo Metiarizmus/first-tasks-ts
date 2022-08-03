@@ -17,7 +17,7 @@ getMaxSubSum([1, 2, 3]) = 6 (берём все)
 Если все элементы отрицательные – ничего не берём(подмассив пустой) и сумма равна «0»
 */
 
-function getMaxSubSum(arr: Array<number>): number {
+function getMaxSubSum(arr: number[]): number {
 
     let maxSum:number = 0;
     let sum:number = 0;
